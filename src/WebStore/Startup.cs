@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebStore
 {
@@ -83,9 +84,50 @@ namespace WebStore
             });
         }
 
-        //app.Run(async(context) =>
+        //private async Task CreateRoles(ApplicationDbContext context, IServiceProvider serviceProvider)
+        //{
+        //    var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+        //    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        //    // First, Creating User role as each role in User Manager  
+        //    List<IdentityRole> roles = new List<IdentityRole>();
+        //    roles.Add(new IdentityRole { Name = "Manager", NormalizedName = "MANAGER" });
+
+        //    //Then, the machine added Default User as the Admin user role
+        //    foreach (var role in roles)
         //    {
-        //        await context.Response.WriteAsync("<h1>Sorry, an error has occurred, please return <a href='/'>Home</a></h1>");
+        //        var roleExit = await roleManager.RoleExistsAsync(role.Name);
+        //        if (!roleExit)
+        //        {
+        //            context.Roles.Add(role);
+        //            context.SaveChanges();
+        //        }
+        //    }
+
+        //    await CreateUser(context, userManager);
+        //}
+
+        //private async Task CreateUser(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        //{
+        //    var managerUser = await userManager.FindByNameAsync("TestManager");
+        //    if (managerUser != null)
+        //    {
+        //        if (!(await userManager.IsInRoleAsync(userManager.Id, "Manager")))
+        //            userManager.AddToRoleAsync(userManager.UserName, "TestManager");
+        //    }
+        //    else  
+        //    {
+        //        var newManager = new ApplicationUser()
+        //        {
+        //            UserName = "TestManager"
+        //        };
+        //        await userManager.CreateAsync(newManager, "Alpha@Mega");
+        //        await userManager.AddToRoleAsync(userManager.UserName, "Manager");
+        //    }
+        //}
+
+        //app.Run(async(context) =>
+        //{
+        //    await context.Response.WriteAsync("<h1>Sorry, an error has occurred, please return <a href='/'>Home</a></h1>");
         //});
     }
 }
